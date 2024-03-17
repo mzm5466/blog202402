@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/q/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/q/css/style.css">
+    <title>旅行博客-我的</title>
+    <script src="/static/q/js/tailwindcss.js"></script>
+</head>
+
+<body>
+    <main>
+        <header
+            class="container lg:container relative pt-2 lg:pt-7 lg:px-12 rounded-none lg:rounded lg:flex lg:justify-end lg:flex-col">
+            <img alt="标题图片" fetchpriority="high" width="500" height="100" decoding="async" data-nimg="1"
+                class="max-w-full max-h-[180px] lg:max-h-none lg:min-h-[312px] w-full h-full object-cover absolute inset-0 z-0 lg:rounded-lg"
+                style="color:transparent" src="/static/q/images/headergradient.jpg">
+            <div class="relative flex gap-4 lg:gap-0 z-10 bottom w-full pb-8 lg:pb-0 lg:pt-20">
+                <div
+                    class="rounded-full w-16 h-16 bg-bit-red lg:w-32 lg:h-32 lg:mr-6 ml-6 lg:ml-0 mt-7 shrink-0 relative overflow-hidden">
+                    <img src="/static/q/images/places.jpeg" alt="" id="headurl"
+                         class="w-[128px] h-[128px] rounded-full flex justify-center items-center text-2xl font-semibold text-white lg:text-5xl uppercase">
+                    <input type="file" name="file" id="file" class="absolute top-0 w-[128px] h-[128px] opacity-0">
+                </div>
+                <div class="flex flex-col items-start lg:justify-end overflow-x-auto lg:overflow-x-clip pt-5 lg:pt-0">
+                    <h1 class="text-2xl font-semibold pb-2 leading-none lg:pb-4 lg:text-4xl lg:font-[400]">
+                        <font style="vertical-align: inherit;" class="nickname">
+                            用户
+                        </font>
+                    </h1>
+                    <p class="text-sm">
+                        <font style="vertical-align: inherit;" class="username">
+                            <font style="vertical-align: inherit;">empty</font>
+                        </font>
+                    </p>
+                </div>
+            </div>
+            <nav class="relative z-10 flex justify-center font-semibold lg:justify-end" role="tablist"><a
+                    href="./user_profile.html" class="no-underline">
+                    <div class="bg-white text-blue rounded-t-md  px-5 md:px-6 py-3 flex items-center gap-2"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="11px" height="15px" viewBox="0 0 14 20"
+                            fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M12 0.625H2C1.50272 0.625 1.02581 0.822544 0.674175 1.17417C0.322544 1.52581 0.125 2.00272 0.125 2.5V18.75C0.125941 18.8607 0.15514 18.9693 0.20983 19.0656C0.264519 19.1618 0.342886 19.2425 0.4375 19.3C0.535537 19.3525 0.645032 19.38 0.75625 19.38C0.867468 19.38 0.976963 19.3525 1.075 19.3L7 15.725L12.925 19.2875C13.0228 19.3471 13.1355 19.3774 13.25 19.375C13.3585 19.3741 13.4654 19.3485 13.5625 19.3C13.6571 19.2425 13.7355 19.1618 13.7902 19.0656C13.8449 18.9693 13.8741 18.8607 13.875 18.75V2.5C13.875 2.00272 13.6775 1.52581 13.3258 1.17417C12.9742 0.822544 12.4973 0.625 12 0.625ZM12.625 17.65L7.325 14.4625C7.22619 14.4054 7.1141 14.3754 7 14.3754C6.8859 14.3754 6.77381 14.4054 6.675 14.4625L1.375 17.65V2.5C1.375 2.33424 1.44085 2.17527 1.55806 2.05806C1.67527 1.94085 1.83424 1.875 2 1.875H12C12.1658 1.875 12.3247 1.94085 12.4419 2.05806C12.5592 2.17527 12.625 2.33424 12.625 2.5V17.65Z">
+                            </path>
+                        </svg>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">博客</font>
+                        </font>
+                    </div>
+                </a><a href="./user.html" class="no-underline">
+                    <div class="px-5 md:px-6 py-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="15px" height="15px" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M8.99951 1H6.99951L6.75816 2.12632C6.61324 2.80258 6.09172 3.32524 5.49353 3.67237C4.8955 4.01942 4.19318 4.2012 3.53523 3.98862L2.4375 3.63395L1.4375 5.366L2.29216 6.13811C2.80556 6.60191 2.99951 7.30813 2.99951 8C2.99951 8.69192 2.80555 9.39819 2.29212 9.86202L1.43766 10.634L2.43766 12.366L3.53523 12.0114C4.19319 11.7988 4.8955 11.9806 5.49354 12.3276C6.09172 12.6748 6.61324 13.1974 6.75816 13.8737L6.99951 15H8.99951L9.24085 13.8737C9.38577 13.1974 9.90733 12.6748 10.5055 12.3276C11.1036 11.9805 11.806 11.7987 12.464 12.0113L13.5619 12.366L14.5619 10.634L13.7067 9.8614C13.1934 9.39772 12.9995 8.6917 12.9995 8C12.9995 7.30835 13.1934 6.60238 13.7067 6.13872L14.562 5.366L13.562 3.63395L12.464 3.9887C11.806 4.2013 11.1036 4.0195 10.5055 3.67241C9.90733 3.32524 9.38577 2.80256 9.24085 2.12626L8.99951 1Z"
+                                stroke="blue" stroke-linejoin="round" fill="none"></path>
+                            <path
+                                d="M10.9995 8C10.9995 9.65685 9.65637 11 7.99951 11C6.34266 11 4.99951 9.65685 4.99951 8C4.99951 6.34315 6.34266 5 7.99951 5C9.65637 5 10.9995 6.34315 10.9995 8Z"
+                                stroke="blue" stroke-linejoin="round" fill="none"></path>
+                        </svg>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">帐号设定</font>
+                        </font>
+                    </div>
+                </a></nav>
+        </header>
+        <div class="flex flex-col">
+            <div class="container flex flex-col pt-8 pb-6 lg:flex-row lg:pt-16 lg:pb-10">
+                <div class="flex items-center lg:pl-6 lg:w-full">
+                    <h2 class="text-2xl pb-2 lg:text-5xl lg:pb-3">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">我的旅行</font>
+                        </font>
+                    </h2>
+                </div>
+                <div
+                    class="flex justify-between md:gap-4 flex-nowrap w-full md:justify-end lg:self-center overflow-x-scroll md:overflow-visible">
+                    <div><a href="./pushBlog.html" class="btn btn btn-primary flex" type="button" data-testid="btn"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="self-center mr-2"
+                                viewBox="0 0 21 20" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M19.8184 8.87499H12.0934V1.14999C12.0934 0.851625 11.9749 0.565477 11.7639 0.354499C11.553 0.14352 11.2668 0.0249939 10.9684 0.0249939C10.6701 0.0249939 10.3839 0.14352 10.1729 0.354499C9.96197 0.565477 9.84344 0.851625 9.84344 1.14999V8.87499H2.11694C1.81858 8.87499 1.53243 8.99352 1.32145 9.2045C1.11047 9.41548 0.991943 9.70163 0.991943 9.99999C0.991943 10.2984 1.11047 10.5845 1.32145 10.7955C1.53243 11.0065 1.81858 11.125 2.11694 11.125H9.84344V18.85C9.84344 19.1484 9.96197 19.4345 10.1729 19.6455C10.3839 19.8565 10.6701 19.975 10.9684 19.975C11.2668 19.975 11.553 19.8565 11.7639 19.6455C11.9749 19.4345 12.0934 19.1484 12.0934 18.85V11.125H19.8184C20.1168 11.125 20.403 11.0065 20.6139 10.7955C20.8249 10.5845 20.9434 10.2984 20.9434 9.99999C20.9434 9.70163 20.8249 9.41548 20.6139 9.2045C20.403 8.99352 20.1168 8.87499 19.8184 8.87499Z">
+                                </path>
+                            </svg>
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">发布博客</font>
+                            </font>
+                        </a>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-6 md:mx-20 lg:container lg:mx-auto " id="empty">
+                <div class="bg-sand rounded-lg p-5 md:py-32 justify-start md:justify-center bg-[#FBF6EA]">
+                    <h2 class="text-xl opacity-30 md:text-center">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">没有发布一篇博客</font>
+                        </font>
+                    </h2>
+                    <div class="flex flex-wrap justify-start md:justify-center items-center gap-4 mt-4 lg:mt-9">
+                        <a href="./index.html" class="btn flex items-center" data-testid="a">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">查看其他人</font>
+                            </font><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="ml-4"
+                                viewBox="0 0 8 12" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M1.08921 0.148971C1.03905 0.106489 0.981007 0.074303 0.918404 0.0542515C0.8558 0.0341999 0.78986 0.0266754 0.724348 0.0321076C0.592041 0.0430785 0.469511 0.106159 0.383714 0.207471C0.297916 0.308784 0.255879 0.44003 0.26685 0.572337C0.277821 0.704644 0.340901 0.827174 0.442214 0.912971L6.46021 5.99997L0.442214 11.087C0.340901 11.1728 0.277821 11.2953 0.26685 11.4276C0.255879 11.5599 0.297916 11.6912 0.383714 11.7925C0.469511 11.8938 0.592041 11.9569 0.724348 11.9678C0.856655 11.9788 0.987901 11.9368 1.08921 11.851L7.55821 6.38197C7.61379 6.33504 7.65846 6.27654 7.68909 6.21056C7.71973 6.14458 7.73561 6.07272 7.73561 5.99997C7.73561 5.92723 7.71973 5.85536 7.68909 5.78938C7.65846 5.7234 7.61379 5.66491 7.55821 5.61797L1.08921 0.148971Z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mx-6 md:mx-20 lg:container lg:mx-auto hidden" id="user_post_history">
+                <div class="bg-sand rounded-lg p-5 md:justify-center bg-[#FBF6EA]">
+                    <div class="gap-4">
+                        <button id="delAll" class="btn btn-danger">删除全部帖子</button>
+                        <div class="mt-4">
+                            <ul id="post_history">
+                                <li class="flex justify-between items-center">
+                                    <a href="javascript:void(0);">
+                                        加载中...
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mx-6 md:mx-20 lg:container lg:mx-auto mt-4 hidden" id="get_draftsBox">
+                <div class="bg-sand rounded-lg p-5 md:justify-center bg-[#FBF6EA]">
+                    <div class="gap-4">
+                        <h2>草稿</h2>
+                        <div class="mt-4">
+                            <ul id="get_drafts">
+                                <li class="flex justify-between items-center">
+                                    <a href="javascript:void(0);">
+                                        加载中...
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/static/q/js/script.js"></script>
+    <script src="/static/q/layui/layui.js"></script>
+    <script>
+        layui.use('layer', function () {
+            var layer = layui.layer,
+                layuiIndex = null;
+            if (!window.localStorage.getItem('token')) {
+                layer.msg('请先登录', {
+                    icon: 2,
+                    time: 500
+                }, function () {
+                    location.href = './login.html'
+                })
+                return false;
+            }
+            $.ajax({
+                url: 'http://'+window.location.host+'/api' + '/personal_center/',
+                method: 'GET',
+                headers: {
+                    Token: window.localStorage.getItem('token')
+                },
+                success: (res) => {
+                    console.log(res)
+                    if (res.code == 200) {
+                        $('.nickname').text(res.data.nickname || '请重置名称')
+                        $('.username').text(res.data.username)
+                        $('#headurl').attr('src', res.data.headurl ? 'http://'+window.location.host+'/' + res.data.headurl : './images/places.jpeg')
+                    }
+                }
+            });
+            $('#file').on('change', function () {
+                layuiIndex = layer.load(3, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+                let file = $('#file')[0].files[0]
+                let formData = new FormData();
+                formData.append('file', file);
+                console.log(file)
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + '/update_usercenter_heading/',
+                    method: 'POST',
+                    contentType: false,
+                    processData: false,
+                    timeout: 5000,
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    data: formData,
+                    success: (res) => {
+                        if (res.code == 200) {
+                            layer.msg('上传成功');
+                            $('#headurl').attr('src', 'http://'+window.location.host+'/' + res.headurl)
+                        } else {
+                            layer.msg('上传失败');
+                        }
+                        console.log(res)
+                    },
+                    error: () => {
+                        layer.msg('上传失败');
+                    }, complete: () => {
+                        layer.close(layuiIndex);
+                    }
+                });
+            })
+
+            layuiIndex = layer.load(3, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            // 用户发过的帖子 user_post_history
+            getUser_post_history()
+            function getUser_post_history() {
+
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + '/user_post_history/?currentPage=1',
+                    method: 'GET',
+                    timeout: 5000, //超时时间设置，单位毫秒
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    success: (res) => {
+                        console.log(res)
+                        if (res.code == 200) {
+                            if (res.data.length >= 1) {
+                                $('#user_post_history').removeClass('hidden')
+                                $('#empty').addClass('hidden')
+                                $('#post_history').empty()
+                                let html = ''
+                                res.data.forEach(item => {
+                                    $('#post_history').append(`
+                                        <li class="flex justify-between items-center mb-3">
+                                            <a href="./detail.html?postId=${item.postId}">
+                                                ${item.post_title}
+                                            </a>
+                                            <div>
+                                                <a href="./pushBlog.html?postId=${item.postId}" class="btn btn-danger update">编辑</a>
+                                                <button class="btn btn-danger del">删除</button>
+                                            </div>
+                                        </li>
+                                    `)
+                                    $('.del').on('click', function () {
+                                        layer.confirm('是否删除该帖子', {
+                                            btn: ['确定', '取消']
+                                        }, function () {
+                                            layuiIndex = layer.load(3, {
+                                                shade: [0.1, '#fff'] //0.1透明度的白色背景
+                                            });
+                                            $.ajax({
+                                                url: 'http://'+window.location.host+'/api' + '/delposts/',
+                                                method: 'post',
+                                                data: {
+                                                    postId: item.postId
+                                                },
+                                                timeout: 5000, //超时时间设置，单位毫秒
+                                                headers: {
+                                                    Token: window.localStorage.getItem('token')
+                                                },
+                                                success: (res) => {
+                                                    layer.msg(res.data);
+                                                    getUser_post_history()
+                                                },
+                                                error: () => {
+                                                    layer.msg('请求失败');
+                                                },
+                                                complete: () => {
+                                                    layer.close(layuiIndex);
+                                                }
+                                            })
+                                        })
+                                    })
+                                })
+                            }
+                        }
+                    },
+                    error: (err) => {
+                        layer.msg('请求失败');
+                        console.log(err)
+                    },
+                    complete: () => {
+                        layer.close(layuiIndex);
+                    }
+                })
+
+            }
+            // 删除所有帖子
+            $('#delAll').on('click', function () {
+                layer.confirm('是否删除所有帖子', {
+                    btn: ['确定', '取消']
+                }, function () {
+                    layuiIndex = layer.load(3, {
+                        shade: [0.1, '#fff'] //0.1透明度的白色背景
+                    });
+                    $.ajax({
+                        url: 'http://'+window.location.host+'/api' + '/del_all_posts/',
+                        method: 'GET',
+                        headers: {
+                            Token: window.localStorage.getItem('token')
+                        },
+                        success: (res) => {
+                            console.log(res)
+                            if (res.code == 200) {
+                                layui.layer.msg(res.msg, {
+                                    icon: 1,
+                                    time: 1000
+                                })
+                            }
+                        },
+                        error: (err) => {
+                            console.log(err)
+                            layer.msg('删除失败')
+                        },
+                        complete: () => {
+                            layer.close(layuiIndex);
+                        }
+                    })
+
+                }, function () {
+
+                });
+            })
+
+            getUser_draft();
+            // 获取用户草稿 
+            function getUser_draft() {
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + '/get_drafts/',
+                    method: 'GET',
+                    timeout: 5000, //超时时间设置，单位毫秒
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    success: (res) => {
+                        console.log(res)
+                        if (res.code == 200) {
+                            if (res.data.length >= 1) {
+                                $('#get_draftsBox').toggleClass('hidden')
+                                $('#get_drafts').empty()
+                                let html = ''
+                                res.data.forEach(item => {
+                                    $('#get_drafts').append(`
+                                        <li class="flex justify-between items-center mb-3">
+                                            <a href="./detail.html?postId=${item.postId}">
+                                                ${item.post_title}
+                                            </a>
+                                            <div>
+                                                <a href="./pushBlog.html?postId=${item.postId}" class="btn btn-danger update">编辑</a>
+                                                <button class="btn btn-danger del">删除</button>
+                                                <button class="btn btn-danger finish">发布</button>
+                                            </div>
+                                        </li>
+                                    `)
+                                    $('.del').on('click', function () {
+                                        layer.confirm('是否删除该帖子', {
+                                            btn: ['确定', '取消']
+                                        }, function () {
+                                            layuiIndex = layer.load(3, {
+                                                shade: [0.1, '#fff'] //0.1透明度的白色背景
+                                            });
+                                            $.ajax({
+                                                url: 'http://'+window.location.host+'/api' + '/delposts/',
+                                                method: 'post',
+                                                data: {
+                                                    postId: item.postId
+                                                },
+                                                timeout: 5000, //超时时间设置，单位毫秒
+                                                headers: {
+                                                    Token: window.localStorage.getItem('token')
+                                                },
+                                                data: {
+                                                    postId: item.postId
+                                                },
+                                                success: (res) => {
+                                                    layer.msg(res.msg);
+                                                    getUser_post_history()
+                                                },
+                                                error: () => {
+                                                    layer.msg('请求失败');
+                                                },
+                                                complete: () => {
+                                                    layer.close(layuiIndex);
+                                                }
+                                            })
+                                        })
+                                    })
+                                    $('.finish').on('click', function () {
+                                        layer.confirm('是否发布？', {
+                                            btn: ['确定', '取消']
+                                        }, function () {
+                                            layuiIndex = layer.load(3, {
+                                                shade: [0.1, '#fff'] //0.1透明度的白色背景
+                                            });
+                                            $.ajax({
+                                                url: 'http://'+window.location.host+'/api' + '/update_post/',
+                                                method: 'post',
+                                                data: {
+                                                    postId: item.postId
+                                                },
+                                                timeout: 5000, //超时时间设置，单位毫秒
+                                                headers: {
+                                                    Token: window.localStorage.getItem('token')
+                                                },
+                                                success: (res) => {
+                                                    layer.msg(res.data);
+                                                    getUser_draft()
+                                                },
+                                                error: () => {
+                                                    layer.msg('请求失败');
+                                                },
+                                                complete: () => {
+                                                    layer.close(layuiIndex);
+                                                }
+                                            })
+                                        })
+                                    })
+                               
+                               
+                               
+                                })
+                            }
+                        }
+                    },
+                    error: (err) => {
+                        layer.msg('请求失败');
+                        console.log(err)
+                    },
+                    complete: () => {
+                        layer.close(layuiIndex);
+                    }
+                })
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

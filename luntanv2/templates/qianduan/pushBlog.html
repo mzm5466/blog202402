@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/q/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/q/css/style.css">
+    <link href="/static/q/css/wangeditor.css" rel="stylesheet">
+    <title>旅行博客-我的</title>
+    <script src="/static/q/js/tailwindcss.js"></script>
+    <style>
+        #editor—wrapper {
+            border: 1px solid #ccc;
+            z-index: 100;
+            /* 按需定义 */
+        }
+
+        #toolbar-container {
+            border-bottom: 1px solid #ccc;
+        }
+
+        #editor-container {
+            height: 500px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="container mt-5">
+        <div class="flex mb-2 justify-between">
+            <h1 class="text-3xl font-bold text-gray-700">发布旅行博客</h1>
+            <button class="btn btn-primary focus:outline-none" id="saveDrafts">保存草稿</button>
+        </div>
+        <form action="">
+            <div class="flex items-center mb-3">
+                <span class="text-base">标题：</span>
+                <input type="text" name="post_title" required placeholder="请输入标题"
+                    class="ml-2 w-11/12 changefilter mt-1 bg-white border border-black-200 rounded-lg h-10 cursor-pointer pl-4 pr-8 pt-0 pb-0 disabled:cursor-not-allowed disabled:opacity-20">
+            </div>
+            <div class="flex items-center mb-3">
+                <span class="text-base">类型：</span>
+                <select name="continent" required id="continent"
+                    class="ml-2 w-[200px] changefilter mt-1 bg-white border border-black-200 rounded-lg h-10 cursor-pointer pl-4 pr-8 pt-0 pb-0 disabled:cursor-not-allowed disabled:opacity-20">
+                </select>
+                <select name="country" required id="country"
+                    class="ml-2 w-[200px] changefilter mt-1 bg-white border border-black-200 rounded-lg h-10 cursor-pointer pl-4 pr-8 pt-0 pb-0 disabled:cursor-not-allowed disabled:opacity-20">
+                </select>
+                <input type="text" placeholder="请输入地点" required name="location"
+                    class="ml-2 w-[200px] changefilter mt-1 bg-white border border-black-200 rounded-lg h-10 cursor-pointer pl-4 pr-8 pt-0 pb-0 disabled:cursor-not-allowed disabled:opacity-20">
+                <!-- <input type="text"
+                    class="w-11/12 changefilter mt-1 bg-white border border-black-200 rounded-lg h-10 cursor-pointer pl-4 pr-8 pt-0 pb-0 disabled:cursor-not-allowed disabled:opacity-20"> -->
+            </div>
+            <div class="flex items-center mb-3">
+                <span class="text-base">主图：</span>
+                <div
+                    class="rounded w-16 h-16 bg-bit-red lg:w-32 lg:h-32 lg:mr-6 ml-6 lg:ml-0 mt-7 shrink-0 relative overflow-hidden">
+                    <img src="/static/q/images/load.png" alt="" id="headurl"
+                         class="w-[128px] h-[128px] rounded flex justify-center items-center text-2xl font-semibold text-white lg:text-5xl uppercase">
+                    <input type="file" id="file" class="absolute top-0 w-[128px] h-[128px] opacity-0">
+                </div>
+            </div>
+            <div id="editor—wrapper">
+                <div id="toolbar-container"><!-- 工具栏 --></div>
+                <div id="editor-container"><!-- 编辑器 --></div>
+            </div>
+            <div class="flex justify-center">
+                <button class="btnSubmit btn btn-primary focus:outline-none my-10 w-[200px] h-[50px] text-[18px]"
+                    style="font-size: 17px!important;">发布</button>
+            </div>
+        </form>
+    </main>
+    <script src="/static/q/js/script.js"></script>
+    <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+    <script src="/static/q/layui/layui.js"></script>
+
+    <script>
+        layui.use('layer', function () {
+            var layer = layui.layer,
+                continent_countries_data = [],
+                content = '',
+                layuiIndex = null,
+                drafts = null,
+                country_img = '',
+                isget_drafts = false,
+                updateId = null,
+                continent = null,
+                country = null,
+                is_publish = null;
+
+            const { createEditor, createToolbar } = window.wangEditor
+
+            var editorConfig = {
+                placeholder: 'Type here...',
+                onChange(editor) {
+                    const html = editor.getHtml()
+                    content = html;
+                    console.log('editor content', html)
+                    // 也可以同步到 <textarea>
+                },
+                MENU_CONF: {
+                    uploadImage: {
+                        server: 'http://'+window.location.host+'/api' + '/upload_pic/',
+                        // form-data fieldName ，默认值 'wangeditor-uploaded-image'
+                        fieldName: 'file',
+
+                        // 单个文件的最大体积限制，默认为 2M
+                        maxFileSize: 1 * 1024 * 1024, // 1M
+
+                        // 最多可上传几个文件，默认为 100
+                        maxNumberOfFiles: 1,
+
+                        // 选择文件时的类型限制，默认为 ['image/*'] 。如不想限制，则设置为 []
+                        allowedFileTypes: [],
+
+                        // 自定义上传参数，例如传递验证的 token 等。参数会被添加到 formData 中，一起上传到服务端。
+
+                        // 将 meta 拼接到 url 参数中，默认 false
+                        metaWithUrl: false,
+
+                        // 自定义增加 http  header
+                        headers: {
+                            Token: window.localStorage.getItem('token')
+                        },
+
+                        // 跨域是否传递 cookie ，默认为 false
+                        withCredentials: true,
+
+                        // 超时时间，默认为 10 秒
+                        timeout: 5 * 1000, // 5 秒
+
+
+                        // 上传之前触发
+                        onBeforeUpload(file) {    // JS 语法
+                            // file 选中的文件，格式如 { key: file }
+                            return file
+                            // 可以 return
+                            // 1. return file 或者 new 一个 file ，接下来将上传
+                            // 2. return false ，不上传这个 file
+                        },
+
+                        // 上传进度的回调函数
+                        onProgress(progress) {       // JS 语法
+                            // progress 是 0-100 的数字
+                            console.log('progress', progress)
+                        },
+
+                        // 单个文件上传成功之后
+                        onSuccess(file, res) {          // JS 语法
+                            console.log(`${file.name} 上传成功`, res)
+                        },
+
+                        // 单个文件上传失败
+                        onFailed(file, res) {           // JS 语法
+                            console.log(`${file.name} 上传失败`, res)
+                        },
+
+                        // 上传错误，或者触发 timeout 超时
+                        onError(file, err, res) {               // JS 语法
+                            console.log(`${file.name} 上传出错`, err, res)
+                        },
+                        customInsert(res, insertFn) {                  // JS 语法
+                            // res 即服务端的返回结果
+                            // 从 res 中找到 url alt href ，然后插入图片
+                            if (res.code == 200) {
+                                const href = 'http://'+window.location.host+'/' + res.pic;
+                                const url = 'http://'+window.location.host+'/' + res.pic;
+                                const alt = res.data;
+                                insertFn('http://'+window.location.host+'/' + res.pic, 'alt', 'http://'+window.location.host+'/' + res.pic)
+                            } else {
+                                layer.msg('上传失败')
+                            }
+                        },
+                    }
+                }
+            }
+
+            const editor = createEditor({
+                selector: '#editor-container',
+                html: '<p><br></p>',
+                config: editorConfig,
+                mode: 'default', // or 'simple'
+            })
+
+            const toolbarConfig = {}
+
+            const toolbar = createToolbar({
+                editor,
+                selector: '#toolbar-container',
+                config: toolbarConfig,
+                mode: 'default', // or 'simple'
+            })
+            var url = window.location.href;
+
+            // 解析查询字符串
+            var paramsString = new URL(url).searchParams;
+            //  判断是否修改
+            if (!paramsString.get('postId')) {
+                $('#saveDrafts').show()
+            } else {
+                $('#saveDrafts').hide()
+                $('.btnSubmit').text('修改')
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + "/posts_detail/?postId=" + paramsString.get('postId'),
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    success: function (res) {
+                        console.log(res)
+                        if (res.code == 200) {
+                            // 赋值 form
+                            $("form select[name='continent']").val(res.data.continent);
+                            $("form input[name='post_title']").val(res.data.post_title);
+                            $("form input[name='location']").val(res.data.location || '');
+                            editor.setHtml(res.data.content)
+                            // $("form input[name='pic']").val(res.data.pic);
+                            country = res.data.country;
+                            is_publish = res.data.is_publish;
+                            continent = res.data.continent;
+                            $("#headurl").attr('src', res.data.pic ? 'http://'+window.location.host+'/' + res.data.pic : './images/load.png');
+                            updateId = res.data.postId;
+                        }
+                    }
+                })
+                // api/posts_detail/?postId=2
+            }
+            $.ajax({
+                url: 'http://'+window.location.host+'/api' + "/continent_countries/",
+                success: function (res) {
+                    if (res.code == 200) {
+                        $('.continent').empty()
+                        continent_countries_data = res.data;
+                        res.data.forEach(function (item, index) {
+                            $('#continent').append('<option value="' + item.continent_id + '" data-id="' + index + '">' + item.continent + '</option>')
+                        });
+                        if(paramsString.get('postId')){
+                            $('#continent').val(continent)
+                            $('#continent').change()
+                        }
+                    }
+                }
+            })
+
+
+            $('#continent').on('change', function () {
+                layuiIndex = layer.load(3, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+                console.log($(this))
+                var continent = $(this).val();
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + "/get_countries/?continent_id=" + continent,
+                    success: function (res) {
+                        console.log(res)
+                        if (res.code == 200) {
+                            $('#country').empty()
+                            res.countries.forEach(function (item, index) {
+                                $('#country').append('<option value="' + item.id + '" data-id="' + index + '">' + item.name + '</option>')
+                            })
+                        }
+                    },
+                    error: function (err) {
+                        layer.msg('获取国家列表失败')
+                    },
+                    complete: function () {
+                        layer.close(layuiIndex);
+                    }
+                })
+            })
+
+            // 保存草稿
+            $('#saveDrafts').on('click', function () {
+                drafts = 0;
+                // 点击 保存草稿
+                var form = document.querySelector('form');
+                var formData = new FormData(form);
+                formData.append('content', content);
+                formData.append('is_publish', 0);
+                formData.append('pic', country_img);
+                layuiIndex = layer.load(3, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + "/createposts/",
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        console.log(res)
+                        if (res.code == 200) {
+                            layer.msg('保存草稿成功')
+                            // window.location.href = '/blog.html'
+                        }
+                    },
+                    error: function (err) {
+                        layer.msg('上传失败')
+                    },
+                    complete: function () {
+                        layer.close(layuiIndex);
+                    }
+                })
+            });
+
+            $('form').on('submit', function (e) {
+                layuiIndex = layer.load(3, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+                e.preventDefault()
+                var formData = new FormData(this);
+                formData.append('content', content);
+                formData.append('is_publish', paramsString.get('drafts') && drafts ? 0 : 1);
+                formData.append('pic', country_img);
+                if(paramsString.get('postId')){
+                    formData.append('postId', updateId);
+                    formData.append('is_publish', is_publish);
+                    
+                }
+
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + (paramsString.get('postId') ?  '/editposts/' : "/createposts/"),
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        console.log(res)
+                        if (res.code == 200) {
+                            layer.msg(res.data)
+                            // window.location.href = '/blog.html'
+                        }
+                    },
+                    error: function (err) {
+                        layer.msg('提交失败')
+                    },
+                    complete: function () {
+                        layer.close(layuiIndex);
+                    }
+                })
+            })
+
+            $('#file').on('change', function () {
+                let file = $('#file')[0].files[0]
+                let formData = new FormData();
+                formData.append('file', file);
+                console.log(file)
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + '/upload_pic/',
+                    method: 'POST',
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    data: formData,
+                    success: (response) => {
+                        if (response.code == 200) {
+                            $('#headurl').attr('src', 'http://'+window.location.host+'/' + response.pic)
+                            country_img = response.pic;
+                            layer.msg(response.msg, { icon: 1 });
+                        } else {
+                            layer.msg(response.msg, { icon: 2 });
+                        }
+                    }
+                });
+            })
+
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/q/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/q/css/style.css">
+    <title>旅行博客-分类</title>
+    <script src="/static/q/js/tailwindcss.js"></script>
+</head>
+
+<body>
+
+    <main>
+        <div>
+            <section class="hero_hero__ZRqSa relative z-10 pb-6 lg:pb-16">
+                <figure>
+                    <div class="h-full">
+                        <div class=" relative w-full relative bg-black-400 h-[300px] lg:h-[100vh] lg:max-h-[28rem]">
+                            <img alt="" fetchpriority="high" decoding="async" data-nimg="fill"
+                                 class="banner absolute w-full h-full object-cover top-0 left-0 bg-black-200"
+                                 sizes="100vw" srcset="/static/q/images/places.jpeg" src="/static/q/images/places.jpeg"
+                                 style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                            <div class="absolute h-full w-full">
+                                <div class="container">
+                                    <h1 class="text-2xl md:text-4xl font-display leading-tight font-semibold absolute text-white bottom-12 pr-4 lg:bottom-14"
+                                        data-testid="page-heading">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">探索孤独星球上的地方</font>
+                                        </font>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section aria-labelledby="explore"
+                class="container pb-6 lg:pb-16 lg:flex lg:flex-wrap lg:justify-around mx-auto relative">
+                <div class="lg:w-full lg:pr-8 max-w-full">
+                    <h1 class="text-3xl lg:text-6xl text-blue font-semibold contents"><span> </span></h1>
+                    <div class="text-xl inline"></div>
+                    <form class="mb-8" name="places-list" action="/places">
+                        <div class="my-8 lg:flex">
+                            <div class="mb-2 lg:w-1/2 lg:pr-8"><label for="placeType">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">过滤</font>
+                                    </font><select id="sort_by"
+                                        class="changefilter mt-1 w-full bg-white border border-black-200 rounded-lg h-10 cursor-pointer pl-4 pr-8 pt-0 pb-0 disabled:cursor-not-allowed disabled:opacity-20"
+                                        name="type">
+                                        <option value="" selected="">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">默认</font>
+                                            </font>
+                                        </option>
+                                        <option value="publish_date">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">日期</font>
+                                            </font>
+                                        </option>
+                                        <option value="country">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">国家</font>
+                                            </font>
+                                        </option>
+                                        <option value="location">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">城市</font>
+                                            </font>
+                                        </option>
+                                    </select>
+                                </label></div>
+                            <div class="mb-4 lg:w-1/2 lg:pl-8"><label for="placeSort">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">排序依据</font>
+                                    </font><select aria-label="排序依据" id="order_by"
+                                        class="changefilter mt-1 w-full bg-white border border-black-200 rounded-lg h-10 cursor-pointer pl-4 pr-8 pt-0 pb-0 disabled:cursor-not-allowed disabled:opacity-20"
+                                        name="sort">
+                                        <option value="desc" selected="">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">最受欢迎</font>
+                                            </font>
+                                        </option>
+                                        <option value="">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">A-Z</font>
+                                            </font>
+                                        </option>
+                                        <option value="desc">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Z-A</font>
+                                            </font>
+                                        </option>
+                                    </select>
+                                </label></div>
+                        </div>
+                    </form>
+                    <ul class="flex flex-row flex-wrap sm:-mx-2" id="placeList">
+                        <li class="w-full sm:w-1/2 lg:w-1/3 sm:px-4 mb-8">
+                            <article
+                                class="relative flex-shrink-0 lg:flex-shrink mx-4 first:ml-0 last:mr-0 w-full aspect-square">
+                                <img alt="" loading="lazy" width="360" height="360" decoding="async" data-nimg="1"
+                                    class="max-w-full object-cover rounded w-full h-full max-h-96"
+                                    style="color:transparent" src="/static/q/images/loding.jpeg">
+                                <div class=""><a href="/england/london" class="card-link text-lg lg:text-xl font-bold">
+                                        <div
+                                            class="text-sm uppercase font-semibold tracking-wide mt-4 z-10 text-black-400 block">
+                                            <font style="vertical-align: inherit;">
+                                                加载中...
+                                            </font>
+                                        </div>
+                                    </a></div>
+                            </article>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <div class="my-12 md:mb-20 md:mt-0 flex justify-center">
+                <div id="laypage"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/q/js/script.js"></script>
+    <script src="/static/q/layui/layui.js"></script>
+
+    <script>
+        // api/listposts/ 
+        layui.use('layer', function () {
+            var layer = layui.layer,
+                laypage = layui.laypage, count = 0;
+            var index = layer.load(3, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            var url = window.location.href;
+
+            // 解析查询字符串
+            var paramsString = new URL(url).searchParams;
+
+            // 获取指定参数名的值
+            var postTitle = paramsString.get('country_id');
+
+            laypage.render({
+                elem: 'laypage'
+                , count //数据总数，从服务端得到
+                , jump: function (obj, first) {
+                    //obj包含了当前分页的所有参数，比如：
+                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    console.log(obj.limit); //得到每页显示的条数
+
+                    //首次不执行
+                    if (first) {
+                        load(paramsString.get('post_title'), paramsString.get('country_id'), obj.curr)
+                        //do something
+                    }
+                }
+            });
+
+
+            function load(post_title, country_id, currentPage) {
+                let u = `/post_list/?currentPage=${currentPage}&post_title=${post_title || ''}&country_id=${country_id || ''}&order_by=${$('#order_by').val()}&sort_by=${$('#sort_by').val()}`
+                if (!post_title && !country_id && !$('#order_by').val() && !$('#sort_by').val()) {
+                    u = `/listposts/?currentPage=${currentPage}`
+                } else if ($('#order_by').val() || $('#sort_by').val()) {
+                    u = `/post_list/?currentPage=${currentPage}&post_title=${post_title || ''}&country_id=${country_id || ''}&order_by=${$('#order_by').val()}&sort_by=${$('#sort_by').val()}`
+                }
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + u,
+                    method: "GET",
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        if (res.code == 200) {
+                            $('#placeList').empty()
+                            // banner
+                            $('.banner').attr('src', 'http://'+window.location.host+'/' + res.banner)
+                            laypage.render({
+                                elem: 'laypage'
+                                , limit: res.pageSIze
+                                , count: res.total
+                            });
+                            res.data.forEach((item, index) => {
+                                $('#placeList').append(`
+                                    <li class="w-full sm:w-1/2 lg:w-1/3 sm:px-4 mb-8">
+                                        <article
+                                            class="relative flex-shrink-0 lg:flex-shrink mx-4 first:ml-0 last:mr-0 w-full aspect-square">
+                                            <img alt="${item.post_title}" loading="lazy" width="360" height="360" decoding="async"
+                                                data-nimg="1" class="max-w-full object-cover rounded w-full h-full max-h-96"
+                                                style="color:transparent"
+                                                src="${item.pic ? 'http://'+window.location.host+'/' + '/' + item.pic : './images/loding.jpeg'}">
+                                            <div class="">
+                                                <a href="./detail.html?postId=${item.postId}" class="card-link text-lg lg:text-xl font-bold">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">${item.post_title}</font>
+                                                    </font>
+                                                </a></div>
+                                        </article>
+                                    </li>
+                            `)
+                            })
+                        }
+                    }
+                    , complete: function () {
+                        layer.close(index);
+                    }
+                })
+            }
+
+            $('.changefilter').on('change', function () {
+                load(paramsString.get('post_title'), paramsString.get('country_id'))
+            })
+        })
+    </script>
+</body>
+
+</html>

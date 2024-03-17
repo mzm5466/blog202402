@@ -1,0 +1,114 @@
+<style>
+    .navs>.relative:hover {
+        color: rgb(0, 87, 217);
+    }
+
+    .navs>.relative:hover .headlessui {
+        display: block;
+    }
+</style>
+<header class="bg-white relative z-50 py-[5px]">
+    <nav class="mx-auto md:container container flex items-center justify-between gap-x-6 lg:gap-x-12" aria-label="全球导航">
+        <div class="flex gap-x-6 lg:gap-x-12"><a href="/" class="-m-1.5 p-1.5" aria-label="孤独星球主页"><span
+                    class="sr-only">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">孤独星球</font>
+                    </font>
+                </span>
+            </a></div>
+        <div class="hidden lg:flex lg:self-stretch lg:gap-x-12 navs">
+
+        </div>
+
+        <div class="flex flex-1 justify-end md:self-stretch">
+            <div class="relative flex alitign-center">
+                <input type="text" id="search-input" placeholder="请输入搜索内容" class="text-sm appearance-none focus:outline-none font-normal bg-white block border border-solid border-black-200 leading-normal py-2 pl-2 pr-8 w-full  placeholder:text-black-200">
+                <button
+                    class="w-[65px] relative mx-4 lg:mr-8 flex items-center gap-x-1 h-full font-semibold text-black hover:text-blue focus:outline-none focus:text-blue"
+                    type="button" id="search">
+                    <span class="hidden md:inline ml-2">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">搜索</font>
+                        </font>
+                    </span></button>
+            </div>
+            <div
+                style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none">
+            </div>
+            <div class="relative flex items-center">
+                <a href="./login.html" class="btn btn-primary focus:outline-none " id="signup">登录</a>
+                <a href="./user.html" class="btn btn-primary focus:outline-none hidden" id="user">我的</a>
+            </div>
+            <div
+                style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none">
+            </div><button type="button" class="lg:hidden items-center justify-between py-2.5 pl-2.5 text-black"><span
+                    class="sr-only">Open
+                    main menu</span>
+
+            </button>
+        </div>
+    </nav>
+</header>
+
+<script src="/static/q/js/jquery.js"></script>
+
+<script>
+
+    $(() => {
+        if (window.localStorage.getItem('token')) {
+            $('#user').toggleClass('hidden')
+            $('#signup').toggleClass('hidden')
+        }
+        $.ajax({
+            url: 'http://'+window.location.host+'/api' + "/continent_countries/",
+            success: function (res) {
+                if (res.code == 200) {
+                    $('.navs').empty()
+                    res.data.forEach(element => {
+                        let c = '';
+                        (element.countries).forEach((item)=>{
+                            c+=`
+                            <a href="./nationDetail.html?country_id=${item.id}" class="block py-1 hover:text-blue">${item.name}</a>
+                            `
+                        });
+                        
+                        $('.navs').append(`
+                            <div class="relative" >
+                                <button
+                                    data-id='${element.id}'
+                                    class="relative flex items-center gap-x-1 h-full font-semibold text-black hover:text-blue focus:outline-none focus:text-blue"
+                                    aria-expanded="false"  type="button"
+                                    id="headlessui-popover-button-:Rkmal6:">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">${element.continent}</font>
+                                </font>
+                        </button>
+                        <div class="headlessui hidden absolute top-full rounded-3xl overflow-hidden bg-white rounded drop-shadow-sm max-w-5xl @7xl:max-w-none left-[21%] -translate-x-[21%] xl:-left-8 xl:translate-x-0"
+                            tabindex="-1" data-headlessui-state="open">
+                            <div class="flex gap-x-6 w-content px-0 py-0 px-6">
+                                <div class="py-8 shrink w-[450px] xxl:w-[600px]">
+                                    <div class="flex @5xl:flex-nowrap gap-x-4 @5xl:gap-x-6 gap-y-4 @5xl:gap-y-6">
+                                        <div class="w-full">
+                                            <p class="type-sm border-b border-black-200 font-semibold pb-1 mb-2">国家</p>
+                                            ${c ? c : '<p class="type-sm text-center">暂无数据</p>'}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    `)
+                    });
+                }
+            }
+        })
+        
+        $('#search').on('click', function () {
+            let keyword = $('#search-input').val()
+            if (keyword) {
+                window.location.href = `./places.html?post_title=${keyword}`
+            }
+        })
+    })
+</script>

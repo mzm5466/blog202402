@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/q/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/q/css/style.css">
+    <title>旅行博客-我的</title>
+    <script src="/static/q/js/tailwindcss.js"></script>
+</head>
+
+<body>
+    <main>
+        <header
+            class="container lg:container relative pt-2 lg:pt-7 lg:px-12 rounded-none lg:rounded lg:flex lg:justify-end lg:flex-col">
+            <img alt="标题图片" fetchpriority="high" width="500" height="100" decoding="async" data-nimg="1" 
+                class="max-w-full max-h-[180px] lg:max-h-none lg:min-h-[312px] w-full h-full object-cover absolute inset-0 z-0 lg:rounded-lg"
+                style="color:transparent" src="/static/q/images/headergradient.jpg">
+            <div class="relative flex gap-4 lg:gap-0 z-10 bottom w-full pb-8 lg:pb-0 lg:pt-20">
+                <div
+                    class="rounded-full w-16 h-16 bg-bit-red lg:w-32 lg:h-32 lg:mr-6 ml-6 lg:ml-0 mt-7 shrink-0 relative overflow-hidden">
+                    <img src="/static/q/images/places.jpeg" alt="" id="headurl"
+                         class="w-[128px] h-[128px] rounded-full flex justify-center items-center text-2xl font-semibold text-white lg:text-5xl uppercase">
+                    <input type="file" name="file" id="file" class="absolute top-0 w-[128px] h-[128px] opacity-0">
+                </div>
+                <div class="flex flex-col items-start lg:justify-end overflow-x-auto lg:overflow-x-clip pt-5 lg:pt-0">
+                    <h1 class="text-2xl font-semibold pb-2 leading-none lg:pb-4 lg:text-4xl lg:font-[400]">
+                        <font style="vertical-align: inherit;" class="nickname">
+                            用户
+                        </font>
+                    </h1>
+                    <p class="text-sm">
+                        <font style="vertical-align: inherit;" class="username">
+                            <font style="vertical-align: inherit;">empty</font>
+                        </font>
+                    </p>
+                </div>
+            </div>
+            <nav class="relative z-10 flex justify-center font-semibold lg:justify-end" role="tablist"><a
+                    href="./user_profile.html" class="no-underline">
+                    <div class="false px-5 md:px-6 py-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="11px" height="15px" viewBox="0 0 14 20" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M12 0.625H2C1.50272 0.625 1.02581 0.822544 0.674175 1.17417C0.322544 1.52581 0.125 2.00272 0.125 2.5V18.75C0.125941 18.8607 0.15514 18.9693 0.20983 19.0656C0.264519 19.1618 0.342886 19.2425 0.4375 19.3C0.535537 19.3525 0.645032 19.38 0.75625 19.38C0.867468 19.38 0.976963 19.3525 1.075 19.3L7 15.725L12.925 19.2875C13.0228 19.3471 13.1355 19.3774 13.25 19.375C13.3585 19.3741 13.4654 19.3485 13.5625 19.3C13.6571 19.2425 13.7355 19.1618 13.7902 19.0656C13.8449 18.9693 13.8741 18.8607 13.875 18.75V2.5C13.875 2.00272 13.6775 1.52581 13.3258 1.17417C12.9742 0.822544 12.4973 0.625 12 0.625ZM12.625 17.65L7.325 14.4625C7.22619 14.4054 7.1141 14.3754 7 14.3754C6.8859 14.3754 6.77381 14.4054 6.675 14.4625L1.375 17.65V2.5C1.375 2.33424 1.44085 2.17527 1.55806 2.05806C1.67527 1.94085 1.83424 1.875 2 1.875H12C12.1658 1.875 12.3247 1.94085 12.4419 2.05806C12.5592 2.17527 12.625 2.33424 12.625 2.5V17.65Z">
+                            </path>
+                        </svg>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">博客</font>
+                        </font>
+                    </div>
+                </a><a href="./user.html" class="no-underline">
+                    <div class="bg-white text-blue rounded-t-md px-5 md:px-6 py-3 flex items-center gap-2"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 16 16"
+                            fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M8.99951 1H6.99951L6.75816 2.12632C6.61324 2.80258 6.09172 3.32524 5.49353 3.67237C4.8955 4.01942 4.19318 4.2012 3.53523 3.98862L2.4375 3.63395L1.4375 5.366L2.29216 6.13811C2.80556 6.60191 2.99951 7.30813 2.99951 8C2.99951 8.69192 2.80555 9.39819 2.29212 9.86202L1.43766 10.634L2.43766 12.366L3.53523 12.0114C4.19319 11.7988 4.8955 11.9806 5.49354 12.3276C6.09172 12.6748 6.61324 13.1974 6.75816 13.8737L6.99951 15H8.99951L9.24085 13.8737C9.38577 13.1974 9.90733 12.6748 10.5055 12.3276C11.1036 11.9805 11.806 11.7987 12.464 12.0113L13.5619 12.366L14.5619 10.634L13.7067 9.8614C13.1934 9.39772 12.9995 8.6917 12.9995 8C12.9995 7.30835 13.1934 6.60238 13.7067 6.13872L14.562 5.366L13.562 3.63395L12.464 3.9887C11.806 4.2013 11.1036 4.0195 10.5055 3.67241C9.90733 3.32524 9.38577 2.80256 9.24085 2.12626L8.99951 1Z"
+                                stroke="blue" stroke-linejoin="round" fill="none"></path>
+                            <path
+                                d="M10.9995 8C10.9995 9.65685 9.65637 11 7.99951 11C6.34266 11 4.99951 9.65685 4.99951 8C4.99951 6.34315 6.34266 5 7.99951 5C9.65637 5 10.9995 6.34315 10.9995 8Z"
+                                stroke="blue" stroke-linejoin="round" fill="none"></path>
+                        </svg>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">帐号设定</font>
+                        </font>
+                    </div>
+                </a></nav>
+        </header>
+        <div class="container lg:px-0 mb-8 lg:mb-20">
+            <section class="pt-8 px-4 lg:p-12 lg:pb-0 mb-6 lg:mb-20">
+                <h2 class="text-2xl lg:text-5xl font-display mt-8 lg:mt-3 mb-2 lg:mb-3">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">帐号设定</font>
+                    </font>
+                </h2>
+                <p class="text-sm lg:text-lg text-black-400">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">更新和管理您的帐户信息</font>
+                    </font>
+                </p>
+            </section>
+            <section class="rounded bg-blue-100 py-8 px-4 lg:p-12 max-w-[890px] mb-8 lg:mb-20">
+                <form action="/api/user/rna/user?returnTo=/profile/settings" name="firstName"><label for="firstName"
+                        class="block text-sm uppercase font-bold tracking-wider mb-4 lg:mb-6">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">名</font>
+                        </font>
+                    </label>
+                    <div class="flex" id="shownickname">
+                        <div class="relative shrink">
+                            <p class="lg:text-lg text-black-400 lg:ml-6 nickname">
+                                <font style="vertical-align: inherit;" class="username">
+                                    <font style="vertical-align: inherit;">empty</font>
+                                </font>
+                            </p>
+                        </div><button type="button" id="updateUsername"
+                            class="text-sm text-black font-semibold ml-auto mr-0 shrink-0 flex items-center disabled:opacity-50 underline tracking-[0.25px]">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">更新</font>
+                            </font>
+                        </button>
+                    </div>
+                    <fieldset class="lg:flex mt-4 lg:mt-6 mb-4 lg:mb-0 hidden lg:hidden" id="nicknameFieldset">
+                        <input id="nickname" name="nickname"
+                            class=" rounded-[50px] border border-blue lg:text-lg leading-none py-2 px-4 lg:px-8"
+                            value="">
+                        <div class="flex items-center mt-4 lg:mt-0 lg:ml-10 grow"><button id="saveNickname"
+                                data-testid="btn" class="btn btn-primary flex items-center" type="button"
+                                data-testid="btn">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">保存</font>
+                                </font>
+                            </button><button type="button" id="cancelNickname"
+                                class="text-sm text-black font-semibold ml-auto mr-0 disabled:opacity-50 underline tracking-[0.25px]">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">取消</font>
+                                </font>
+                            </button></div>
+                    </fieldset>
+                </form>
+                <hr class="border-black-200 mt-8 lg:mg-10">
+                <div class="pt-8 lg:pt-12">
+                    <p class="block text-sm uppercase font-bold tracking-wider mb-4 lg:mb-6">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">密码</font>
+                        </font>
+                    </p>
+                    <div class="flex">
+                        <div class="relative shrink">
+                            <p class="lg:text-lg text-black-400 lg:ml-6">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">******************</font>
+                                </font>
+                            </p>
+                        </div><button type="button" id="resetPassword"
+                            class="text-sm text-black font-semibold ml-auto mr-0 shrink-0 flex items-center disabled:opacity-50 underline tracking-[0.25px]">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">重置密码</font>
+                            </font>
+                        </button>
+                    </div>
+                </div>
+                <hr class="border-black-200 mt-8 lg:mg-10">
+            </section>
+            <section class="rounded bg-blue-100 py-8 px-4 lg:p-12 max-w-[890px] mb-6 lg:mb-8">
+                <h2 class="mb-2 lg:mb-4 uppercase font-bold">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">旅行偏好</font>
+                    </font>
+                </h2>
+                <p>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">选择旅行目的地以帮助我们个性化您的家庭喂养体验。</font>
+                    </font>
+                </p><a href="/profile/onboarding?reset&amp;ref=%2Fprofile%2Fsettings" class="jump-link mt-4 lg:mt-6">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">选择</font>
+                    </font><!-- -->
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">目的地</font>
+                    </font>
+                </a>
+            </section>
+            <button class="btn btn-primary focus:outline-none" id="logout">退出登录</button>
+        </div>
+    </main>
+    <script src="/static/q/js/script.js"></script>
+    <script src="/static/q/layui/layui.js"></script>
+    <script>
+        layui.use('layer', function () {
+            var layer = layui.layer,
+                layuiIndex = null;
+            if(!window.localStorage.getItem('token')){
+                layer.msg('请先登录', {
+                    icon: 2,
+                    time: 500
+                }, function () {
+                    location.href = './login.html'
+                })
+                return false;
+            }
+            $.ajax({
+                url: 'http://'+window.location.host+'/api' + '/personal_center/',
+                method: 'GET',
+                headers: {
+                    Token: window.localStorage.getItem('token')
+                },
+                success: (res) => {
+                    if (res.code == 200) {
+                        $('#nickname').val(res.data.nickname || '请重置名称')
+                        $('.nickname').text(res.data.nickname || '请重置名称')
+                        $('.username').text(res.data.username)
+                        $('#headurl').attr('src', res.data.headurl ? 'http://'+window.location.host+'/' + res.data.headurl : './images/places.jpeg')
+                    }
+                    console.log(res)
+                }
+            });
+            $('#updateUsername').on('click', function () {
+                console.log(2)
+                $(this).parent().toggleClass('lg:hidden hidden');
+                $('#nicknameFieldset').toggleClass('lg:hidden hidden');
+            })
+            $('#cancelNickname').on('click', function () {
+                console.log(2)
+                $('#shownickname').toggleClass('lg:hidden hidden');
+                $(this).parents('#nicknameFieldset').toggleClass('lg:hidden hidden');
+            })
+            $('#saveNickname').on('click', function () {
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + '/personal_center_update/',
+                    method: 'POST',
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    data: {
+                        nickname: $('#nickname').val()
+                    },
+                    success: (response) => {
+                        if(response.code == 200){
+                            layer.msg(response.msg, { icon: 1 });
+                            $('#nickname').val(response.data.nickname)
+                            $('.nickname').text(response.data.nickname)
+                        }else{
+                            layer.msg(response.msg, { icon: 2 });
+                        }
+                    }
+                });
+            })
+            // 重置密码
+            $('#resetPassword').on('click', function () {
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + '/re_password/',
+                    method: 'POST',
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    data: {
+                        new_password: 'QWe123456',
+                        old_password: window.localStorage.getItem('password') || null
+                    },
+                    success: (response) => {
+                        if(response.code == 200){
+                            layer.msg(response.msg, { icon: 1,time:1000 },function(){
+                                window.localStorage.clear()
+                                window.location.href = './login.html';
+                            });
+                        }else{
+                            layer.msg(response.msg, { icon: 2 });
+                        }
+                    }
+                });
+            })
+
+            $('#file').on('change', function () {
+                layuiIndex = layer.load(3, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+                let file = $('#file')[0].files[0]
+                let formData = new FormData();
+                formData.append('file', file);
+                console.log(file)
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + '/update_usercenter_heading/',
+                    method: 'POST',
+                    contentType: false,
+                    processData: false,
+                    timeout: 5000,
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    data: formData,
+                    success: (res) => {
+                        if(res.code == 200 ){
+                            layer.msg('上传成功');
+                            $('#headurl').attr('src', 'http://'+window.location.host+'/' + res.headurl)
+                        }else{
+                            layer.msg('上传失败');
+                        }
+                        console.log(res)
+                    },
+                    error :()=>{
+                        layer.msg('上传失败');
+                    },complete: () => {
+                        layer.close(layuiIndex);
+                    }
+                });
+            })
+            
+        
+            $('#logout').on('click',function(){
+                layer.confirm('是否退出登录？', {
+                    btn: ['确定','取消']
+                    }, function(){
+                        layer.msg('退出成功', {icon: 1,time:1000},function(){
+                            window.localStorage.clear();
+                            window.location.href = './login.html';
+                        });
+                    }, function(){
+                        
+                    });
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/q/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/q/css/style.css">
+    <title>旅行博客-分类</title>
+    <script src="/static/q/js/tailwindcss.js"></script>
+</head>
+
+<body>
+    <main>
+        <section class="lg:px-6 lg:pb-6">
+            <div class="relative lg:rounded-lg h-screen-1/2 lg:min-h-144 overflow-hidden h-[400px]"><img alt="。
+            " loading="lazy" width="1920" height="640" class="max-w-full object-cover w-full h-full"
+                    style="color:transparent" id="pic" src="/static/q/images/shutterstockRF_1288809448.jpg">
+                <div
+                    class="z-10 absolute top-0 w-full h-full bg-gradient-to-b from-black/40 via-black/10 to-transparent">
+                </div>
+            </div>
+        </section>
+        <section class="mt-8 mb-16 lg:mt-16 lg:mb-12">
+            <div class="container">
+                <div class="grid lg:grid-cols-3">
+                    <div class="lg:col-span-2 lg:mr-8">
+                        <header>
+                            <h1 class="lg:inline text-3xl lg:text-6xl text-blue-400 font-semibold">
+                                <font style="vertical-align: inherit;" class="name">
+                                    -
+                                </font>
+                            </h1>
+                        </header>
+                        <p class="max-w-2xl min-h-[90px] my-6  leading-loose text-black-400 text-sm lg:text-lg">
+                            <font style="vertical-align: inherit;" class="info">
+                                -
+                            </font>
+                        </p>
+                    </div>
+                    <div class="order-2 lg:row-span-2 mt-8 lg:mt-0 hidden">
+                        <div class="bg-blue-100 rounded-md">
+                            <div class="p-6 lg:p-8 flex flex-col h-full text-center">
+                                <h3 class="my-4 font-semibold text-xl">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">您的下一次旅行从这里开始</font>
+                                    </font>
+                                </h3>
+                                <p class="mb-6 lg:mb-0 text-black-400 lg:text-md leading-loose">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">从梦想到计划，旅行计划选项可帮助您制定理想的行程。</font>
+                                    </font>
+                                </p>
+                                <div class="mt-8"><a
+                                        href="/api/auth/login?unauthenticatedTripSession=true&amp;action=passthrough"
+                                        class="btn btn-primary w-full text-center"><span class="sr-only">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">登录</font>
+                                            </font>
+                                        </span>
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">开始使用</font>
+                                        </font>
+                                    </a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="py-6 lg:p-6">
+            <section class="relative py-12 md:py-20 bg-blue-100 md:p-10 w-full lg:rounded-lg">
+                <div class="container">
+                    <h2 class="inline-block text-sm lg:text-base text-transparent bg-clip-text bg-gradient-to-r from-slate to-bit-pink font-mono uppercase tracking-wider"
+                        data-anchor="attractions" data-nav="Attractions">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">01 / 景点</font>
+                        </font>
+                    </h2>
+                    <h3 class="mt-4 mb-16 text-2xl lg:text-5xl">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">热门地点博客</font>
+                        </font>
+                    </h3>
+                </div>
+                <div class="max-w-full overflow-x-hidden px-4 lg:container ">
+                    <ul class=" carousel flex overflow-x-scroll md:overflow-x-auto overflow-y-hidden -mx-4"
+                        id="placeList">
+                        <li class=" carousel-item flex-shrink-0 px-4 pb-2 w-90 md:w-1/3">
+                            <div class="relative">
+                                <article class="relative rounded"><img alt="富士山和樱花" loading="lazy" width="600"
+                                        height="400" decoding="async" data-nimg="1"
+                                        class="max-w-full object-cover rounded relative aspect-square"
+                                        src="/static/q/images/loding.jpeg"
+                                        style="color: transparent;">
+                                    <div class="space-y-4 mt-4">
+                                        <p><a class="card-link line-clamp-2 w-[80%] md:w-90"
+                                                href="/japan/west-of-tokyo/fuji-go-ko/attractions/mt-fuji/a/poi-sig/1309509/356827"><span
+                                                    class="heading-05 font-semibold">
+                                                    <font style="vertical-align: inherit;">
+                                                       正在加载....
+                                                    </font>
+                                                </span></a></p>
+                                    </div>
+                                </article>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:hidden mt-10 text-center"><a href="/japan/attractions" class="btn btn"
+                        data-testid="a">View more attractions</a></div>
+            </section>
+        </div>
+
+    </main>
+
+    <script src="/static/q/js/script.js"></script>
+    <script src="/static/q/layui/layui.js"></script>
+
+    <script>
+        // api/listposts/ 
+        layui.use('layer', function () {
+            var layer = layui.layer,
+                continent_countries_data = [],
+                content = '';
+
+            var index = layer.load(3, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            // 获取详情 get_country
+            var url = window.location.href;
+
+            // 解析查询字符串
+            var paramsString = new URL(url).searchParams;
+
+            // 获取指定参数名的值
+            var postTitle = paramsString.get('country_id');
+
+            $.ajax({
+                url: 'http://'+window.location.host+'/api' + `/get_country/?country_id=${paramsString.get('country_id')}`,
+                method: "GET",
+                headers: {
+                    Token: window.localStorage.getItem('token')
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.code == 200) {
+                        $('.pic').attr('src', res.country.pic ? 'http://'+window.location.host+'/' + res.country.pic : './images/shutterstockRF_1288809448.jpg');
+                        $('.name').text(res.country.name);
+                        $('.info').text(res.country.info);
+                    }
+                },
+                complete: function () {
+                    layer.close(index);
+                }
+            })
+            function load(post_title, country_id) {
+                let u = `/post_list/?currentPage=1&pageSIze=5&country_id=${country_id || ''}`
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + u,
+                    method: "GET",
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    success: function (res) {
+                        console.log(res.data)
+                        if (res.code == 200 && res.data.length >= 1) {
+                            $('#placeList').empty()
+                            res.data.forEach((item, index) => {
+                                $('#placeList').append(`
+                                    <li class=" carousel-item flex-shrink-0 px-4 pb-2 w-90 md:w-1/3">
+                                        <div class="relative">
+                                            <article class="relative rounded"><img alt="富士山和樱花" loading="lazy" width="600"
+                                                    height="400" decoding="async" data-nimg="1"
+                                                    class="max-w-full object-cover rounded relative aspect-square"
+                                                    src="${item.pic ? 'http://'+window.location.host+'/' + item.pic : '/static/q/images/loding.jpeg'}"
+                                                    style="color: transparent;">
+                                                <div class="space-y-4 mt-4">
+                                                    <p><a class="card-link line-clamp-2 w-[80%] md:w-90"
+                                                            href="./detail.html?postId=${item.postId}"><span
+                                                                class="heading-05 font-semibold">
+                                                                <font style="vertical-align: inherit;">
+                                                                    <font style="vertical-align: inherit;">${item.post_title}</font>
+                                                                </font>
+                                                            </span></a></p>
+                                                    <p
+                                                        class="relative flex flex-wrap justify-start items-start gap-x-4 gap-y-2 max-w-full label-sm uppercase hidden">
+                                                    </p>
+                                                    <p class="relative line-clamp-3">
+                                                        <font style="vertical-align: inherit;">
+                                                            ${item.content}
+                                                        </font>
+                                                    </p>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </li>
+                            `)
+                            })
+                        }else{
+                            $('#placeList').empty()
+                            $('#placeList').append(`<div class='text-lg text-center w-full'>暂无数据</div>`)
+                        }
+                    }
+                    , complete: function () {
+                        layer.close(index);
+                    }
+                })
+            }
+
+            load(paramsString.get('post_title'), paramsString.get('country_id'))
+            $('.changefilter').on('change', function () {
+                load(paramsString.get('post_title'), paramsString.get('country_id'))
+            })
+        })
+    </script>
+</body>
+
+</html>

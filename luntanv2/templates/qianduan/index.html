@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/q/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/q/css/style.css">
+    <title>旅行博客</title>
+    <script src="/static/q/js/tailwindcss.js"></script>
+    <style>
+        .card-link:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .styles_panel__pmQtB {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+            transition-duration: .3s;
+            transition-timing-function: cubic-bezier(.4, 0, 1, 1);
+            background-image: linear-gradient(0deg, hsla(0, 0%, 7%, .5), hsla(0, 0%, 7%, .4) 51%, hsla(0, 0%, 7%, 0));
+            background-position: 0 80%;
+            background-size: 200% 200%;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <section class="relative">
+                <div class=" absolute top-32 lg:top-64 left-0 right-0 mx-auto w-content max-w-full z-10">
+                    <div class=" w-4/5 lg:w-content lg:max-w-4xl m-auto flex justify-center">
+                        <div class=" touch-action-none max-w-4xl leading-none text-white text-center">
+                            <h1
+                                class="text-3xl font-display md:text-6xl leading-tighter font-semibold touch-action-none max-w-4xl leading-none text-white text-center">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">发现</font><span class=" whitespace-nowrap">
+                                        <font style="vertical-align: inherit;">有故事价值的</font>
+                                    </span>
+                                    <font style="vertical-align: inherit;">旅行时刻</font>
+                                </font><!-- --> <span class=" whitespace-nowrap">
+                                    <font style="vertical-align: inherit;"></font>
+                                </span>
+                                <font style="vertical-align: inherit;"></font>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class=" overflow-x-auto scroll-snap-x-mandatory flex" id="blogs">
+                    <div data-index="0"
+                        class=" relative snap-align-start w-screen flex-none lg:flex-1 min-h-screen-4/5 lg:min-h-184">
+                        <div class="h-full">
+                            <div class="h-full relative"><img alt="" fetchpriority="high" decoding="async"
+                                    data-nimg="fill"
+                                    class="absolute w-full h-full object-cover top-0 left-0 bg-black-200" sizes="100vw"
+                                    src="/static/q/images/loding.jpeg"
+                                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                <div class="w-full h-full relative flex items-end styles_panel__pmQtB"><a
+                                        class="group w-full mx-4 mb-6 lg:mx-6 lg:mb-8 font-display text-white text-lg lg:text-2xl leading-tight flex justify-between items-end card-link"
+                                        role="button" tabindex="0" href=""><span
+                                            class=" w-10/12 md:w-2/3">
+                                            <font style="vertical-align: inherit;">
+                                               加载中...
+                                            </font>
+                                        </span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                            class="transition-transform ease-in-out duration-300 group-hover:transform group-hover:translate-x-2"
+                                            viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M14.4998 7.80903C14.4742 7.74825 14.4372 7.69292 14.3908 7.64603L8.68084 1.93803C8.58696 1.84427 8.45967 1.79165 8.32699 1.79175C8.19431 1.79184 8.0671 1.84464 7.97334 1.93853C7.87959 2.03241 7.82697 2.1597 7.82707 2.29238C7.82716 2.42506 7.87996 2.55227 7.97384 2.64603L12.8278 7.50003H1.96484C1.83224 7.50003 1.70506 7.5527 1.61129 7.64647C1.51752 7.74024 1.46484 7.86742 1.46484 8.00003C1.46484 8.13263 1.51752 8.25981 1.61129 8.35358C1.70506 8.44735 1.83224 8.50003 1.96484 8.50003H12.8278L7.97384 13.354C7.87996 13.4478 7.82716 13.575 7.82707 13.7077C7.82697 13.8404 7.87959 13.9676 7.97334 14.0615C8.0671 14.1554 8.19431 14.2082 8.32699 14.2083C8.45967 14.2084 8.58696 14.1558 8.68084 14.062L14.3878 8.35403C14.4342 8.30713 14.4712 8.2518 14.4968 8.19103C14.5478 8.069 14.5489 7.93184 14.4998 7.80903Z">
+                                            </path>
+                                        </svg></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-index="1"
+                        class=" relative snap-align-start w-screen flex-none lg:flex-1 min-h-screen-4/5 lg:min-h-184">
+                        <div class="h-full">
+                            <div class="h-full relative"><img alt="" fetchpriority="high" decoding="async"
+                                    data-nimg="fill"
+                                    class="absolute w-full h-full object-cover top-0 left-0 bg-black-200" sizes="100vw"
+                                    src="/static/q/images/loding.jpeg"
+                                    style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                <div class="w-full h-full relative flex items-end styles_panel__pmQtB"><a
+                                        class="group w-full mx-4 mb-6 lg:mx-6 lg:mb-8 font-display text-white text-lg lg:text-2xl leading-tight flex justify-between items-end card-link"
+                                        role="button" tabindex="0" href=""><span
+                                            class=" w-10/12 md:w-2/3">
+                                            <font style="vertical-align: inherit;">
+                                               加载中...
+                                            </font>
+                                        </span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                            class="transition-transform ease-in-out duration-300 group-hover:transform group-hover:translate-x-2"
+                                            viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M14.4998 7.80903C14.4742 7.74825 14.4372 7.69292 14.3908 7.64603L8.68084 1.93803C8.58696 1.84427 8.45967 1.79165 8.32699 1.79175C8.19431 1.79184 8.0671 1.84464 7.97334 1.93853C7.87959 2.03241 7.82697 2.1597 7.82707 2.29238C7.82716 2.42506 7.87996 2.55227 7.97384 2.64603L12.8278 7.50003H1.96484C1.83224 7.50003 1.70506 7.5527 1.61129 7.64647C1.51752 7.74024 1.46484 7.86742 1.46484 8.00003C1.46484 8.13263 1.51752 8.25981 1.61129 8.35358C1.70506 8.44735 1.83224 8.50003 1.96484 8.50003H12.8278L7.97384 13.354C7.87996 13.4478 7.82716 13.575 7.82707 13.7077C7.82697 13.8404 7.87959 13.9676 7.97334 14.0615C8.0671 14.1554 8.19431 14.2082 8.32699 14.2083C8.45967 14.2084 8.58696 14.1558 8.68084 14.062L14.3878 8.35403C14.4342 8.30713 14.4712 8.2518 14.4968 8.19103C14.5478 8.069 14.5489 7.93184 14.4998 7.80903Z">
+                                            </path>
+                                        </svg></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-index="2"
+                    class=" relative snap-align-start w-screen flex-none lg:flex-1 min-h-screen-4/5 lg:min-h-184">
+                    <div class="h-full">
+                        <div class="h-full relative"><img alt="" fetchpriority="high" decoding="async"
+                                data-nimg="fill"
+                                class="absolute w-full h-full object-cover top-0 left-0 bg-black-200" sizes="100vw"
+                                src="/static/q/images/loding.jpeg"
+                                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                            <div class="w-full h-full relative flex items-end styles_panel__pmQtB"><a
+                                    class="group w-full mx-4 mb-6 lg:mx-6 lg:mb-8 font-display text-white text-lg lg:text-2xl leading-tight flex justify-between items-end card-link"
+                                    role="button" tabindex="0" href=""><span
+                                        class=" w-10/12 md:w-2/3">
+                                        <font style="vertical-align: inherit;">
+                                           加载中...
+                                        </font>
+                                    </span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        class="transition-transform ease-in-out duration-300 group-hover:transform group-hover:translate-x-2"
+                                        viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                        <path
+                                            d="M14.4998 7.80903C14.4742 7.74825 14.4372 7.69292 14.3908 7.64603L8.68084 1.93803C8.58696 1.84427 8.45967 1.79165 8.32699 1.79175C8.19431 1.79184 8.0671 1.84464 7.97334 1.93853C7.87959 2.03241 7.82697 2.1597 7.82707 2.29238C7.82716 2.42506 7.87996 2.55227 7.97384 2.64603L12.8278 7.50003H1.96484C1.83224 7.50003 1.70506 7.5527 1.61129 7.64647C1.51752 7.74024 1.46484 7.86742 1.46484 8.00003C1.46484 8.13263 1.51752 8.25981 1.61129 8.35358C1.70506 8.44735 1.83224 8.50003 1.96484 8.50003H12.8278L7.97384 13.354C7.87996 13.4478 7.82716 13.575 7.82707 13.7077C7.82697 13.8404 7.87959 13.9676 7.97334 14.0615C8.0671 14.1554 8.19431 14.2082 8.32699 14.2083C8.45967 14.2084 8.58696 14.1558 8.68084 14.062L14.3878 8.35403C14.4342 8.30713 14.4712 8.2518 14.4968 8.19103C14.5478 8.069 14.5489 7.93184 14.4998 7.80903Z">
+                                        </path>
+                                    </svg></a></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="relative my-12 md:mt-20">
+                <div class="container">
+                    <div class="text-sm uppercase font-semibold tracking-wide text-black-400 block">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">计划你的旅行</font>
+                        </font>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-2xl md:text-4xl font-display leading-tight font-semibold mb-8 lg:mb-16"
+                            data-testid="page-heading">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">接下来去哪里？</font>
+                            </font>
+                        </h2><a href="places.html"  class="btn hidden lg:inline-block mb-4 flex-shrink-0"
+                            data-testid="a">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">查看所有博客</font>
+                            </font>
+                        </a>
+                    </div>
+                </div>
+                <div class=" container mb-8">
+                    <ul class=" carousel flex overflow-x-scroll md:overflow-x-auto overflow-y-hidden -mx-4" id="country_list">
+                        <li class=" carousel-item flex-shrink-0 px-4 pb-2 w-90 md:w-1/3">
+                            <article
+                                class="relative flex-shrink-0 lg:flex-shrink mx-4 first:ml-0 last:mr-0 w-full aspect-square">
+                                <img alt="波士顿" loading="lazy" width="360" height="360" decoding="async"
+                                    data-nimg="1" class="max-w-full object-cover rounded w-full h-full max-h-96"
+                                    style="color:transparent"
+                                    src="/static/q/images/loding.jpeg">
+                                <div class=""><a href="usa/boston" class="card-link text-lg lg:text-xl font-bold">
+                                        <div
+                                            class="text-sm uppercase font-semibold tracking-wide mt-4 z-10 text-black-400 block">
+                                        </div>
+                                        <font style="vertical-align: inherit;">
+                                            加载中...
+                                        </font>
+                                    </a></div>
+                            </article>
+                        </li>
+                    </ul>
+                </div><a href="/places" class="btn block lg:hidden w-content mx-auto" data-testid="a">View all
+                    destinations</a>
+            </section>
+        </div>
+    </main>
+    <script src="/static/q/js/tailwind.confing.js"></script>
+    <script src="/static/q/js/script.js"></script>
+    <script src="/static/q/layui/layui.js"></script>
+    <script>
+        // api/listposts/ 
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            var index = layer.load(3, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            $.ajax({
+                url: 'http://'+window.location.host+'/api' + `/listposts/?currentPage=1&pageSize=3`,
+                method: "GET",
+                headers: {
+                    // Token: window.localStorage.getItem('token')
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.code == 200) {
+                        $('#blogs').empty();
+                        res.data.forEach((item, index) => {
+                            $('#blogs').append(`
+                                <div data-index="${index}"
+                                    class=" relative snap-align-start w-screen flex-none lg:flex-1 min-h-screen-4/5 lg:min-h-184">
+                                    <div class="h-full">
+                                        <div class="h-full relative"><img alt="" fetchpriority="high" decoding="async"
+                                                data-nimg="fill"
+                                                class="absolute w-full h-full object-cover top-0 left-0 bg-black-200" sizes="100vw"
+                                                src="${'http://'+window.location.host+'/' + item.headurl}"
+                                                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                                            <div class="w-full h-full relative flex items-end styles_panel__pmQtB">
+                                                <a class="group w-full mx-4 mb-6 lg:mx-6 lg:mb-8 font-display text-white text-lg lg:text-2xl leading-tight flex justify-between items-end card-link"
+                                                     href="/detail.html/?postId=${item.postId}"><span
+                                                        class=" w-10/12 md:w-2/3">
+                                                        <font style="vertical-align: inherit;">
+                                                            <font style="vertical-align: inherit;">
+                                                                ${item.post_title}
+                                                            </font>
+                                                        </font>
+                                                    </span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                        class="transition-transform ease-in-out duration-300 group-hover:transform group-hover:translate-x-2"
+                                                        viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                                        <path
+                                                            d="M14.4998 7.80903C14.4742 7.74825 14.4372 7.69292 14.3908 7.64603L8.68084 1.93803C8.58696 1.84427 8.45967 1.79165 8.32699 1.79175C8.19431 1.79184 8.0671 1.84464 7.97334 1.93853C7.87959 2.03241 7.82697 2.1597 7.82707 2.29238C7.82716 2.42506 7.87996 2.55227 7.97384 2.64603L12.8278 7.50003H1.96484C1.83224 7.50003 1.70506 7.5527 1.61129 7.64647C1.51752 7.74024 1.46484 7.86742 1.46484 8.00003C1.46484 8.13263 1.51752 8.25981 1.61129 8.35358C1.70506 8.44735 1.83224 8.50003 1.96484 8.50003H12.8278L7.97384 13.354C7.87996 13.4478 7.82716 13.575 7.82707 13.7077C7.82697 13.8404 7.87959 13.9676 7.97334 14.0615C8.0671 14.1554 8.19431 14.2082 8.32699 14.2083C8.45967 14.2084 8.58696 14.1558 8.68084 14.062L14.3878 8.35403C14.4342 8.30713 14.4712 8.2518 14.4968 8.19103C14.5478 8.069 14.5489 7.93184 14.4998 7.80903Z">
+                                                        </path>
+                                                    </svg></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `)
+                        })
+                    }
+                }
+                ,complete: function () {
+                        layer.close(index);
+                    }
+            })
+            //  获取国家列表 /country_list/
+            $.ajax({
+                url: 'http://'+window.location.host+'/api' + `/country_list/`,
+                method: "GET",
+                headers: {
+                    Token: window.localStorage.getItem('token')
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.code == 200) {
+                        $('#country_list').empty();
+                        const t = res.data.splice(0,3)
+                        t.forEach((item, index) => {
+                            $('#country_list').append(`
+                            <li class=" carousel-item flex-shrink-0 px-4 pb-2 w-90 md:w-1/3">
+                                <article
+                                    class="relative flex-shrink-0 lg:flex-shrink mx-4 first:ml-0 last:mr-0 w-full aspect-square">
+                                    <div
+                                        class="absolute font-bold top-5 left-5 md:top-2 md:left-2 lg:top-5 lg:left-5 bg-sand-100 px-2 lg:px-4 rounded border-black border">
+                                    </div><img alt="${item.name}" loading="lazy" width="360" height="360" decoding="async"
+                                        data-nimg="1" class="max-w-full object-cover rounded w-full h-full max-h-96"
+                                        style="color:transparent"
+                                        src="${'http://'+window.location.host+'/' + item.pic}">
+                                    <div class=""><a href="/nationDetail.html?country_id=${item.id}" class="card-link text-lg lg:text-xl font-bold">
+                                            <div
+                                                class="text-sm uppercase font-semibold tracking-wide mt-4 z-10 text-black-400 block">
+                                            </div>
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">${item.name}</font>
+                                            </font>
+                                        </a></div>
+                                </article>
+                            </li>
+                            `)
+                        })
+                    }
+                }
+                ,complete: function () {
+                        layer.close(index);
+                    }
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/q/layui/css/layui.css">
+    <script src="/static/q/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/q/css/style.css">
+    <title>旅行博客-博客详情</title>
+    <script src="/static/q/js/tailwindcss.js"></script>
+</head>
+
+<body>
+    <main class=" mx-auto mt-10">
+        <header class="text-center mb-4">
+            <h1 class="text-2xl font-bold post_title">正在加载...</h1>
+            <p class="publish_date">正在加载...</p>
+        </header>
+        <div class="w-full bg-white border-y  container py-3 content mb-4">
+            正在加载...
+        </div>
+        <div class="CommentsList container mb-4">
+            <h3 class="text-xl mb-4">评论列表</h3>
+            <ul id="CommentsList">
+                正在加载...
+            </ul>
+            <div class="" id="submit">
+                <div class="text-center mt-4">
+                    <input type="text" id="comment-input" placeholder="请输入评论内容" class="w-full border p-4">
+                    <a href="javascript:;" class="btn block w-[120px] mt-2" id="comment">发表评论</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/static/q/js/script.js"></script>
+    <script src="/static/q/layui/layui.js"></script>
+    <script>
+        layui.use('layer', function () {
+            var layer = layui.layer,
+                continent_countries_data = [],
+                content = '',
+                commtype = 1,
+                commentsId = null,
+                index = null;
+            // 1 添加 0 回复
+
+            index = layer.load(3, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            var url = window.location.href;
+
+            // 解析查询字符串
+            var paramsString = new URL(url).searchParams;
+
+            // 获取指定参数名的值
+            var postTitle = paramsString.get('country_id');
+            console.log()
+            $.ajax({
+                url: 'http://'+window.location.host+'/api' + `/posts_detail/?postId=${paramsString.get('postId')}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    if (data.code == 200) {
+                        $('.content').html(data.data.content)
+                        $('.post_title').html(data.data.post_title)
+                        $('.publish_date').html(data.data.publish_date)
+                    }
+                },
+                complete: function () {
+                    layer.close(index);
+                }
+            })
+
+            // 获取评论
+            getComm();
+            function getComm() {
+
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + `/posts/${paramsString.get('postId')}/comments-and-replies/`,
+                    type: 'post',
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    data: {
+                        post_id: paramsString.get('postId')
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.comments.length >= 1) {
+                            $('#CommentsList').empty()
+                            // $('#submit').removeClass('hidden')
+                            data.comments.forEach(element => {
+                                let replies = '';
+                                element.replies.forEach((item)=>{
+                                    replies += `
+                                        <div class="t mb-2">
+                                            <p class="">${item.username}对${element.user}说：${item.content} </p>
+                                            <p class="text-gray-500  text-sm">${item.created_at}</p>
+                                        </div>
+                                    `
+                                })
+                                $('#CommentsList').append(`
+                                    <li class="text-[1rem]">
+                                        <div class="t">
+                                            <p class="text-lg">${element.user}说：${element.content} </p>
+                                            <p class="text-gray-500  text-sm">${element.created_at} <button class="current" >回复</button></p>
+                                            <div class="c pl-4 bg-zinc-200 py-4 mt-2 ml-4 ${replies ? 'block' : 'hidden'}">
+                                                ${replies}
+                                            </div>
+                                        </div>
+                                    </li>
+                                `)
+                                $('.current').on('click', function () {
+                                    // commtype = 0;
+                                    // commentsId = element.id;
+                                    commentsId = element.id;
+                                    commtype = 0;
+                                    $('#comment-input').attr('placeholder','回复'+element.user);
+                                })
+                            });
+                        }else{
+                            $('#CommentsList').html('暂无评论')
+                            // $('#submit').addClass('hidden')
+                        }
+                    },
+                    error: function(){
+                        $('#submit').addClass('hidden')
+                        layer.msg('网络错误');
+                    },
+                    complete: function () {
+                        layer.close(index);
+                    }
+                })
+            }
+
+            // 评论
+            $('#comment').on('click', function () {
+                index = layer.load(3, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+                var index = layer.load(3, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+                let url = `/posts/${paramsString.get('postId')}/comments/`
+                if (commtype == 0) {
+                    url = `/comments/${commentsId}/replies/`
+                }
+
+                $.ajax({
+                    url: 'http://'+window.location.host+'/api' + url,
+                    type: 'POST',
+                    dataType: 'json',
+                    headers: {
+                        Token: window.localStorage.getItem('token')
+                    },
+                    data: {
+                        content: $('#comment-input').val()
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.status == 'success') {
+                            layer.msg('评论成功');
+                            getComm();
+                        }
+                    },
+                    error: function (err) {
+                        layer.msg('请求失败');
+                    },
+                    complete: function () {
+                        commentsId = null;
+                        commtype = 1;
+                        $('#comment-input').val('');
+                        $('#comment-input').attr('placeholder','请输入评论内容');
+                        layer.close(index);
+                    }
+                })
+
+            })
+        
+            function reply(id,user){
+                commentsId = id;
+                commtype = 0;
+                $('#comment-input').attr('placeholder','回复'+user);
+            }
+        })
+    </script>
+</body>
+
+</html>
